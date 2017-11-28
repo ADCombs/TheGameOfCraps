@@ -1,0 +1,15 @@
+C:\Users\truth\source\repos\TheGameOfCraps\TheGameOfCraps\obj\Debug\App.g.cs
+C:\Users\truth\source\repos\TheGameOfCraps\TheGameOfCraps\obj\Debug\TheGameOfCraps_MarkupCompile.cache
+C:\Users\truth\source\repos\TheGameOfCraps\TheGameOfCraps\obj\Debug\TheGameOfCraps_MarkupCompile.lref
+C:\Users\truth\source\repos\TheGameOfCraps\TheGameOfCraps\bin\Debug\TheGameOfCraps.exe.config
+C:\Users\truth\source\repos\TheGameOfCraps\TheGameOfCraps\bin\Debug\TheGameOfCraps.exe
+C:\Users\truth\source\repos\TheGameOfCraps\TheGameOfCraps\bin\Debug\TheGameOfCraps.pdb
+C:\Users\truth\source\repos\TheGameOfCraps\TheGameOfCraps\obj\Debug\TheGameOfCraps.g.resources
+C:\Users\truth\source\repos\TheGameOfCraps\TheGameOfCraps\obj\Debug\TheGameOfCraps.Properties.Resources.resources
+C:\Users\truth\source\repos\TheGameOfCraps\TheGameOfCraps\obj\Debug\TheGameOfCraps.csproj.GenerateResource.Cache
+C:\Users\truth\source\repos\TheGameOfCraps\TheGameOfCraps\obj\Debug\TheGameOfCraps.csproj.CoreCompileInputs.cache
+C:\Users\truth\source\repos\TheGameOfCraps\TheGameOfCraps\obj\Debug\TheGameOfCraps.exe
+C:\Users\truth\source\repos\TheGameOfCraps\TheGameOfCraps\obj\Debug\TheGameOfCraps.pdb
+C:\Users\truth\source\repos\TheGameofCraps\TheGameOfCraps\obj\Debug\TheGameOfCraps.csprojResolveAssemblyReference.cache
+C:\Users\truth\source\repos\TheGameofCraps\TheGameOfCraps\obj\Debug\mainwindow.g.cs
+C:\Users\truth\source\repos\TheGameofCraps\TheGameOfCraps\obj\Debug\mainwindow.baml

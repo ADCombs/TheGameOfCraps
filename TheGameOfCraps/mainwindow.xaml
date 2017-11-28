@@ -1,0 +1,164 @@
+﻿<Window x:Class="TheGameOfCraps.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheGameOfCraps"
+        mc:Ignorable="d"
+		ResizeMode="NoResize"
+		WindowStartupLocation="CenterScreen"
+		FocusManager.FocusedElement="{Binding ElementName = txtBankAccount}"
+        Title="GameofCraps" Height="400" Width="400">
+
+	<!-- Keyboard Bindings For Menu -->
+	<Window.InputBindings>
+		<!-- KeyBindings for menu items -->
+		<KeyBinding Command="{x:Static local:Commands.Start}" Modifiers="Control" Key="S"/>
+		<KeyBinding Command="{x:Static local:Commands.Reset}" Modifiers="Control" Key="U"/>
+		<KeyBinding Command="{x:Static local:Commands.Exit}" Modifiers="Control" Key="X"/>
+		<KeyBinding Command="{x:Static local:Commands.About}" Modifiers="Control" Key="A"/>
+		<KeyBinding Command="{x:Static local:Commands.HotKeys}" Modifiers="Control" Key="Q"/>
+		<KeyBinding Command="{x:Static local:Commands.Rules}" Modifiers="Control" Key="R"/>
+		<!-- End Menu Item KeyBindings -->
+		<!-- Button KeyBindings -->
+		<KeyBinding Command="{x:Static local:Commands.Roll}" Modifiers="Control" Key="B"/>
+		<KeyBinding Command="{x:Static local:Commands.PlayAgain}" Modifiers="Control" Key="p"/>
+		<KeyBinding Command="{x:Static local:Commands.IncreaseBet}" Modifiers="Control" Key="N"/>
+		<KeyBinding Command="{x:Static local:Commands.DecreaseBet}" Modifiers="Control" Key="V"/>
+		<!-- End Button KeyBindings -->
+	</Window.InputBindings>
+
+	<Window.CommandBindings>
+		<!-- Menu Item Command Bindings -->
+		<CommandBinding Command="{x:Static local:Commands.Start}" CanExecute="Start_CanExecute" Executed="Start_Executed"/>
+		<CommandBinding Command="{x:Static local:Commands.HotKeys}" CanExecute="HotKeys_CanExecute" Executed="HotKeys_Executed"/>
+		<CommandBinding Command="{x:Static local:Commands.Reset}" CanExecute="Reset_CanExecute" Executed="Reset_Executed"/>
+		<CommandBinding Command="{x:Static local:Commands.Exit}" CanExecute="Exit_CanExecute" Executed="Exit_Executed"/>
+		<CommandBinding Command="{x:Static local:Commands.About}" CanExecute="About_CanExecute" Executed="About_Executed"/>
+		<CommandBinding Command="{x:Static local:Commands.Rules}" CanExecute="Exit_CanExecute" Executed="Rules_Executed"/>
+		<!-- End Menu Item Command Bindings -->
+		<!-- Button Command Bindings -->
+		<CommandBinding Command="{x:Static local:Commands.PlayAgain}" CanExecute="PlayAgain_CanExecute" Executed="PlayAgain_Executed"/>
+		<CommandBinding Command="{x:Static local:Commands.Roll}" CanExecute="Roll_CanExecute" Executed="Roll_Executed"/>
+		<CommandBinding Command="{x:Static local:Commands.IncreaseBet}" CanExecute="IncreaseBet_CanExecute" Executed="IncreaseBet_Executed"/>
+		<CommandBinding Command="{x:Static local:Commands.DecreaseBet}" CanExecute="DecreaseBet_CanExecute" Executed="DecreaseBet_Executed"/>
+		<!-- End Button Command Bindings -->
+	</Window.CommandBindings>
+
+	<!-- End Keyboard Bindings -->
+	<StackPanel Margin="0,1,0,-1">
+		<Grid>
+			<!-- start of Menu -->
+			<Menu VerticalAlignment="Top" Width="auto" Name="menuMain">
+				<MenuItem Header="_File">
+					<MenuItem Header="_Start" Name="mitmFile_Start" InputGestureText="Ctrl+S" Command="{x:Static local:Commands.Start}"/>
+					<MenuItem Header="_Reset" Name="mitmFile_Reset" InputGestureText="Ctrl+U" Command="{x:Static local:Commands.Reset}"/>
+					<MenuItem Header="_Exit" Name="mitmFile_Exit" InputGestureText="Ctrl+X" Command="{x:Static local:Commands.Exit}"/>
+				</MenuItem>
+				<MenuItem Header="_Help">
+					<MenuItem Header="_About" Name="mitmFile_About" InputGestureText="Ctrl+A" Command="{x:Static local:Commands.About}"/>
+					<MenuItem Header="_Rules" Name="mitmFile_Rules" InputGestureText="Ctrl+R" Command="{x:Static local:Commands.Rules}"/>
+					<MenuItem Header="_Hot Keys" Name="mitmFile_HotKeys" InputGestureText="Ctrl+Q" Command="{x:Static local:Commands.HotKeys}"/>
+				</MenuItem>
+			</Menu>
+			<!-- End of Menu -->
+		</Grid>
+		<!-- Roll Die Group -->
+		<Border Padding="2" Margin="0 0 0 -20">
+			<Grid Height="80">
+				<GroupBox Width="auto" Name="grpRolls" Header="Dice Rolls" Margin="10,10,17,20">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width=".6*"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width=".6*"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<Label Grid.Column="0" Content="Die 1 Roll:" VerticalAlignment="Center"/>
+						<TextBox Grid.Column="1" VerticalAlignment="Center" Name="txtDie1Roll" IsEnabled="False" Margin="0 0 20 0" Background="#eee"/>
+						<Label Grid.Column="2" VerticalAlignment="Center" Content="Die 2 Roll:"/>
+						<TextBox Grid.Column="3" VerticalAlignment="Center" Name="txtDie2Roll" IsEnabled="False" Margin="0 0 20 0" Background="#eee"/>
+					</Grid>
+				</GroupBox>
+			</Grid>
+		</Border>
+		<!-- End Roll Die Group -->
+		<!-- Result display -->
+		<Grid>
+			<GroupBox Width="auto" Name="grpResults" Header="Results" Margin="10,10,17,10">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width=".35*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width=".5*"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<Label Grid.Column="0" Content="Points:" VerticalAlignment="Center"/>
+					<TextBox Grid.Column="1" VerticalAlignment="Center" Name="txtPointTotal" IsEnabled="False" Margin="0 0 20 0" Background="#eee"/>
+					<Label Grid.Column="2" VerticalAlignment="Center" Content="Die Total:"/>
+					<TextBox Grid.Column="3" VerticalAlignment="Center" Name="txtDieTotal" IsEnabled="False" Margin="0 0 20 0" Background="#eee"/>
+				</Grid>
+			</GroupBox>
+		</Grid>
+		<!-- End Result display -->
+		<!-- Wins Display -->
+		<Grid Margin="0 -10 0 0">
+			<GroupBox Width="auto" Name="grpWins" Header="Wins" Margin="10,10,17,10">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width=".7*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width=".75*"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<Label Grid.Column="0" Content="Player Wins:" VerticalAlignment="Center"/>
+					<TextBox Grid.Column="1" VerticalAlignment="Center" Name="txtPlayerWins" IsEnabled="False" Margin="0 0 20 0" Background="#eee" Text="0"/>
+					<Label Grid.Column="2" VerticalAlignment="Center" Content="House Wins:"/>
+					<TextBox Grid.Column="3" VerticalAlignment="Center" Name="txtHouseWins" IsEnabled="False" Margin="0 0 20 0" Background="#eee" Text="0"/>
+				</Grid>
+			</GroupBox>
+		</Grid>
+		<!-- End Wins Display -->
+		<!-- Gambling Display -->
+		<Grid Margin="0 -10 0 0" Height="100">
+			<GroupBox Header="Bets" Margin="10,10,17,20">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<Label Grid.Column="0" Grid.Row="0" Content="Bet Amount:" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+					<Label Grid.Column="0" Grid.Row="1" Content="* Increments of 5"/>
+					<TextBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"  VerticalAlignment="Center" Margin="25 0 20 0" IsEnabled="False" Background="#eee" TextAlignment="Center" Text="0" Name="txtBetAmount"/>
+					<Button Grid.Column="1" Grid.Row="1" Margin="40 2 40 2" Name="btnBetLess" Command="{x:Static local:Commands.DecreaseBet}"/>
+					<Button Grid.Column="2" Grid.Row="1" Margin="40 2 40 2" Name="btnBetMore" Command="{x:Static local:Commands.IncreaseBet}"/>
+				</Grid>
+			</GroupBox>
+		</Grid>
+		<!-- End Gambling Display -->
+		<!-- Display Game Result Label -->
+		<Grid Margin="0 -15 0 -20">
+			<Label Name="lblDisplayWinner" Content="text" HorizontalContentAlignment="Center" Foreground="Red" FontWeight="ExtraBold" FontSize="15" Visibility="Hidden" />
+		</Grid>
+		<!-- End Game Result Label -->
+		<!-- Betting and button functions -->
+		<Grid Height="auto" Margin="0 20 0 0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width=".5*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Button Grid.Column="0" Content="Play Again!" Margin="10 0 0 0"  Name="btnPlayAgain" Command="{x:Static local:Commands.PlayAgain}"/>
+			<Label Grid.Column="1" Content="Balance:" Margin="0 0 0 0"/>
+			<TextBox Grid.Column="2" VerticalAlignment="Center" Margin="0 0 10 0" Name="txtBankAccount" Focusable="True" />
+			<Button Grid.Column="3" Content="Roll!" Margin="0 0 10 0"  Background="Red" Name="btnRoll" Command="{x:Static local:Commands.Roll}"/>
+		</Grid>
+		<!-- Betting and button functions -->
+	</StackPanel>
+</Window>
